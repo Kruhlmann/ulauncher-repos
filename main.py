@@ -22,7 +22,7 @@ class DemoExtension(Extension):
         super(DemoExtension, self).__init__()
         find_all_repositories()
         self.subscribe(KeywordQueryEvent, KeywordQueryEventListener())
-        
+        self.subscribe(ItemEnterEvent, ItemEnterEventListener())
 
 class KeywordQueryEventListener(EventListener):
 
@@ -30,11 +30,18 @@ class KeywordQueryEventListener(EventListener):
         repos = []
         for repo in repository_dirs:
             repos.append(ExtensionResultItem(icon='images/icon.png',
-                                             name=os.path.basename(repo),
+                                             name=os.path.basename(repo) + " " + event.get_argument(),
                                              description=repo,
                                              on_enter=HideWindowAction()))
 
         return RenderResultListAction(repos)
+
+class ItemEnterEventListener(EventListener):
+    
+    def on_event(self, event, extension):
+        data = event.get_data()
+        cmd = ["nvim-qt", data]
+        call(cmd)
 
 if __name__ == '__main__':
     DemoExtension().run()

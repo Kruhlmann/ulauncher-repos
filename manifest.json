@@ -1,16 +1,19 @@
 {
-    "required_api_version": "^1.0.0",
-    "name": "Repository launcher for nvim",
-    "developer_name": "Andreas Kruhlmann",
-    "icon": "images/icon.png",
-    "options": {},
-    "preferences": [
-        {
-            "id": "trigger",
-            "type": "keyword",
-            "name": "trigger",
-            "description": "Event on trigger",
-            "default_value": "repo"
-        }
-    ]
+  "required_api_version": "^2.0.0",
+  "name": "Demo extension",
+  "description": "Extension Description",
+  "developer_name": "John Doe",
+  "icon": "images/icon.png",
+  "options": {
+    "query_debounce": 0.1
+  },
+  "preferences": [
+    {
+      "id": "demo_kw",
+      "type": "keyword",
+      "name": "Demo",
+      "description": "Demo extension",
+      "default_value": "dm"
+    }
+  ]
 }

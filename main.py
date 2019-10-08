@@ -32,7 +32,7 @@ class KeywordQueryEventListener(EventListener):
         for repo in repository_dirs:
             basename = os.path.basename(repo)
             if event.get_argument():
-                if arg.lower() in basename.lower():
+                if event.get_argument().lower() in basename.lower():
                     repos.append(ExtensionResultItem(icon='images/icon.png',
                                                      name=basename,
                                                      description=repo,

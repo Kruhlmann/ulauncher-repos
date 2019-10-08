@@ -5,9 +5,11 @@ from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 import os
+import logging
 
 root_path = "/home/ges/Documents/src"
 repository_dirs = []
+logger = logging.getLogger(__name__)
 
 def find_all_repositories():
     for root, dirs, files in os.walk(root_path, followlinks=True):
@@ -29,8 +31,10 @@ class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         repos = []
         arg = event.get_argument()
+        logger.info("Arg: " + arg)
         for repo in repository_dirs:
-            basename = ps.path.basename(repo)
+            logger.info("basename: " + basename)
+            basename = os.path.basename(repo)
 
             if not arg or arg == "":
                 repos.append(ExtensionResultItem(icon='images/icon.png',

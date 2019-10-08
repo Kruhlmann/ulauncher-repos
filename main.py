@@ -28,11 +28,21 @@ class KeywordQueryEventListener(EventListener):
 
     def on_event(self, event, extension):
         repos = []
+        arg = event.get_argument()
         for repo in repository_dirs:
-            repos.append(ExtensionResultItem(icon='images/icon.png',
-                                             name=os.path.basename(repo) + " " + event.get_argument(),
-                                             description=repo,
-                                             on_enter=HideWindowAction()))
+            basename = ps.path.basename(repo)
+
+            if not arg or arg == "":
+                repos.append(ExtensionResultItem(icon='images/icon.png',
+                                                 name=basename,
+                                                 description=repo,
+                                                 on_enter=HideWindowAction()))
+            else:
+                if arg.lower in basename:
+                    repos.append(ExtensionResultItem(icon='images/icon.png',
+                                                     name=basename,
+                                                     description=repo,
+                                                     on_enter=HideWindowAction()))
 
         return RenderResultListAction(repos)
 

@@ -4,6 +4,7 @@ from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAction
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
+from subprocess import call
 import os
 
 root_path = "/home/ges/Documents/src"
@@ -48,13 +49,9 @@ class KeywordQueryEventListener(EventListener):
 class ItemEnterEventListener(EventListener):
     
     def on_event(self, event, extension):
-        try:
-            data = event.get_data()
-            cmd = ["nvim-qt", event.get_data()]
-            call(["firefox"])
-        except e:
-            with open("/home/ges/test.txt", "w") as myfile:
-                myfile.write(e)
+        data = event.get_data()
+        cmd = ["nvim-qt", event.get_data()]
+        call(cmd)
 
 if __name__ == '__main__':
     DemoExtension().run()

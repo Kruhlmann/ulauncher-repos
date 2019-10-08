@@ -49,6 +49,8 @@ class ItemEnterEventListener(EventListener):
     
     def on_event(self, event, extension):
         data = event.get_data()
+        with open("/home/ges/test.txt", "w") as myfile:
+            myfile.write(event.get_data())
         cmd = ["nvim-qt", data]
         call(cmd)
 

@@ -28,27 +28,20 @@ class KeywordQueryEventListener(EventListener):
 
     def on_event(self, event, extension):
         repos = []
-        arg = event.get_argument()
         
         for repo in repository_dirs:
             basename = os.path.basename(repo)
-            with open("/home/ges/test.txt", "a") as myfile:
-                myfile.write("===")
-                myfile.write(repo)
-                myfile.write(basename)
-                myfile.write(arg)
-                myfile.write("Yes" if arg.lower in basename.lower else "No")
-            #if not arg or arg == "":
-            repos.append(ExtensionResultItem(icon='images/icon.png',
+            if event.get_argument():
+                if arg.lower() in basenamei.lower():
+                    repos.append(ExtensionResultItem(icon='images/icon.png',
+                                                     name=basename,
+                                                     description=repo,
+                                                     on_enter=HideWindowAction()))
+            else:
+                repos.append(ExtensionResultItem(icon='images/icon.png',
                                                  name=basename,
                                                  description=repo,
                                                  on_enter=HideWindowAction()))
-            #else:
-                #if arg.lower in basename:
-                    #repos.append(ExtensionResultItem(icon='images/icon.png',
-                                                     #name=basename,
-                                                     #description=repo,
-                                                     #on_enter=HideWindowAction()))
 
         return RenderResultListAction(repos)
 

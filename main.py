@@ -32,7 +32,11 @@ class KeywordQueryEventListener(EventListener):
         
         for repo in repository_dirs:
             basename = os.path.basename(repo)
-
+            with open("test.txt", "a") as myfile:
+                myfile.write("===")
+                myfile.write(basename)
+                myfile.write(arg)
+                myfile.write(arg.lower in basename.lower)
             #if not arg or arg == "":
             repos.append(ExtensionResultItem(icon='images/icon.png',
                                                  name=basename,

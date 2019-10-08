@@ -1,0 +1,16 @@
+{
+    "required_api_version": "^1.0.0",
+    "name": "Repository launcher for nvim",
+    "developer_name": "Andreas Kruhlmann",
+    "icon": "images/icon.png",
+    "options": {},
+    "preferences": [
+        {
+            "id": "trigger",
+            "type": "keyword",
+            "name": "trigger",
+            "description": "Event on trigger",
+            "default_value": "repo"
+        }
+    ]
+}

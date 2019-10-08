@@ -29,8 +29,8 @@ class KeywordQueryEventListener(EventListener):
         repos = []
         for repo in repository_dirs:
             repos.append(ExtensionResultItem(icon='images/icon.png',
-                                             name='%s' % i,
-                                             description='Item description %s' % os.path.basename(repo),
+                                             name=os.path.basename(repo),
+                                             description=repo,
                                              on_enter=HideWindowAction()))
 
         return RenderResultListAction(repos)

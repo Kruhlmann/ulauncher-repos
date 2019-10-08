@@ -34,9 +34,10 @@ class KeywordQueryEventListener(EventListener):
             basename = os.path.basename(repo)
             with open("/home/ges/test.txt", "a") as myfile:
                 myfile.write("===")
+                myfile.write(repo)
                 myfile.write(basename)
                 myfile.write(arg)
-                myfile.write(arg.lower in basename.lower)
+                myfile.write("Yes" if arg.lower in basename.lower else "No")
             #if not arg or arg == "":
             repos.append(ExtensionResultItem(icon='images/icon.png',
                                                  name=basename,

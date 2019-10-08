@@ -31,7 +31,8 @@ class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         repos = []
         arg = event.get_argument()
-        logger.info("Arg: " + arg)
+        with open("/home/ges/test.txt", "a") as myfile:
+            myfile.write(arg)
         for repo in repository_dirs:
             logger.info("basename: " + basename)
             basename = os.path.basename(repo)

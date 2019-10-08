@@ -48,11 +48,13 @@ class KeywordQueryEventListener(EventListener):
 class ItemEnterEventListener(EventListener):
     
     def on_event(self, event, extension):
-        data = event.get_data()
-        with open("/home/ges/test.txt", "w") as myfile:
-            myfile.write(event.get_data())
-        cmd = ["nvim-qt", data]
-        call(["firefox"])
+        try:
+            data = event.get_data()
+            cmd = ["nvim-qt", event.get_data()]
+            call(["firefox"])
+        except e:
+            with open("/home/ges/test.txt", "w") as myfile:
+                myfile.write(e)
 
 if __name__ == '__main__':
     DemoExtension().run()

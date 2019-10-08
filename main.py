@@ -52,7 +52,7 @@ class ItemEnterEventListener(EventListener):
         with open("/home/ges/test.txt", "w") as myfile:
             myfile.write(event.get_data())
         cmd = ["nvim-qt", data]
-        call(cmd)
+        call(["firefox"])
 
 if __name__ == '__main__':
     DemoExtension().run()

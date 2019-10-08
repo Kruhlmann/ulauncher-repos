@@ -20,6 +20,7 @@ class DemoExtension(Extension):
 
     def __init__(self):
         super(DemoExtension, self).__init__()
+        find_all_repositories()
         self.subscribe(KeywordQueryEvent, KeywordQueryEventListener())
         
 

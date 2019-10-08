@@ -32,7 +32,7 @@ class KeywordQueryEventListener(EventListener):
         
         for repo in repository_dirs:
             basename = os.path.basename(repo)
-            with open("test.txt", "a") as myfile:
+            with open("/home/ges/test.txt", "a") as myfile:
                 myfile.write("===")
                 myfile.write(basename)
                 myfile.write(arg)
